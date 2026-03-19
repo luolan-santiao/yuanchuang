@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>远创科技有限公司 - 首页</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Microsoft YaHei", sans-serif;
+        line-height: 1.6;
+        color: #333;
+      }
+
+      header {
+        background-color: rgba(255, 255, 255, 0.95);
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 35px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        margin: 0 20px;
+        font-size: 16px;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #007bff;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links a {
+          margin: 0 12px;
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav-links a {
+          margin: 0 8px;
+          font-size: 12px;
+        }
+      }
+
+      .hero {
+        min-height: 100vh; /* 修改为最小高度 */
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url("图片/公司首图.png");
+        background-size: cover;
+        background-position: top; /* 确保背景图从顶部开始 */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      .hero-content p {
+        font-size: 1.2em;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 80px 0;
+      }
+
+      .section:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 2em;
+        color: #0056b3; /* 修改为蓝色 */
+        margin-bottom: 15px;
+        position: relative; /* 为了定位伪元素 */
+        display: inline-block; /* 使伪元素相对于文本 */
+      }
+
+      /* 关于我们板块的英文翻译 */
+      #about .section-title h2::after {
+        content: "About Us"; /* 添加英文翻译 */
+        font-size: 0.5em; /* 调整英文翻译的大小 */
+        color: #333; /* 设置英文翻译的颜色 */
+        position: absolute;
+        left: 0;
+        bottom: -20px; /* 调整位置 */
+        width: 100%;
+        text-align: center;
+        white-space: nowrap; /* 确保英文名称不换行 */
+      }
+
+      /* 企业宗旨板块的英文翻译 */
+      #mission .section-title h2::after {
+        content: "Our Mission"; /* 添加英文翻译 */
+        font-size: 0.5em; /* 调整英文翻译的大小 */
+        color: #333; /* 设置英文翻译的颜色 */
+        position: absolute;
+        left: 0;
+        bottom: -20px; /* 调整位置 */
+        width: 100%;
+        text-align: center;
+        white-space: nowrap; /* 确保英文名称不换行 */
+      }
+
+      /* 合作伙伴板块的英文翻译 */
+      #partners .section-title h2::after {
+        content: "Cooperation Partners"; /* 添加英文翻译 */
+        font-size: 0.5em; /* 调整英文翻译的大小 */
+        color: #333; /* 设置英文翻译的颜色 */
+        position: absolute;
+        left: -20px;
+        bottom: -20px; /* 调整位置 */
+        width: 100%;
+        text-align: center;
+        white-space: nowrap; /* 确保英文名称不换行 */
+      }
+            /* 合作伙伴板块的英文翻译 */
+      #do .section-title h2::after {
+        content: "What We Do"; /* 添加英文翻译 */
+        font-size: 0.5em; /* 调整英文翻译的大小 */
+        color: #333; /* 设置英文翻译的颜色 */
+        position: absolute;
+        left: 0px;
+        bottom: -20px; /* 调整位置 */
+        width: 100%;
+        text-align: center;
+        white-space: nowrap; /* 确保英文名称不换行 */
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      #about .features {
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      #do .features {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+        grid-template-columns: repeat(4, minmax(200px, 1fr));
+      }
+      @media (max-width: 768px) {
+        .features {
+          gap: 20px;
+        }
+
+        #about .features {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        #do .features {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .feature-card {
+          padding: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .features {
+          gap: 15px;
+        }
+
+        #about .features {
+          grid-template-columns: 1fr;
+        }
+
+        #do .features {
+          grid-template-columns: 1fr;
+        }
+
+        .feature-card {
+          padding: 15px;
+        }
+
+        .feature-card h3 {
+          font-size: 1.1em;
+        }
+
+        .feature-card p {
+          font-size: 0.9em;
+        }
+      }
+      .feature-card {
+        text-align: center;
+        padding: 30px;
+        border-radius: 8px;
+        background-color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .feature-card img {
+        width: 80px;
+        margin-bottom: 20px;
+      }
+
+      /* 查看详情链接样式 */
+      .detail-link {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+          transition: color 0.3s;
+      }
+
+      .detail-link:hover {
+        background-color: #6e6e6e;
+      }
+
+      .partners {
+        text-align: center;
+      }
+
+      .partners img {
+        max-width: 100%;
+        height: auto;
+        margin: 40px 0;
+      }
+      /* 在现有样式的末尾添加 */
+      .mission-content {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .clients {
+        margin-top: 40px;
+        padding: 30px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .clients h3 {
+        color: #2c3e50;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      /* 联系方式popup样式 */
+      .popup {
+        position: fixed;
+        top: 70px;
+        right: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1001;
+        opacity: 1;
+        transition: opacity 0.3s;
+      }
+
+      .popup.hidden {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+      }
+
+      .popup-content {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .popup-content p {
+        margin: 10px 0;
+        font-size: 14px;
+      }
+
+      .popup-content button {
+        margin-top: 10px;
+        padding: 8px 16px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .popup-content button:hover {
+        background-color: #0056b3;
+      }
+
+      @media (max-width: 768px) {
+        .popup {
+          right: 10px;
+        }
+
+        .popup-content {
+          padding: 15px;
+        }
+
+        .popup-content p {
+          font-size: 12px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .popup {
+          top: 75px;
+          right: 5px;
+          max-width: 90vw;
+        }
+
+        .popup-content {
+          padding: 10px;
+        }
+
+        .popup-content p {
+          font-size: 11px;
+          margin: 5px 0;
+        }
+      }
+
+      /* 联系我们footer样式 */
+      footer {
+        background: linear-gradient(135deg, #0056b3 0%, #003d82 100%);
+        color: white;
+        padding: 60px 0 30px 0;
+        margin-top: 20px;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-top {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .footer-column h3 {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+        font-weight: bold;
+      }
+
+      .footer-column p, .footer-column a {
+        font-size: 0.95em;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .footer-column a {
+        text-decoration: none;
+        transition: color 0.3s;
+        display: block;
+      }
+
+      .footer-column a:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+      }
+
+      .footer-bottom p {
+        font-size: 0.9em;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      @media (max-width: 768px) {
+        .footer-top {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+
+        .nav-links a {
+          margin: 0 12px;
+          font-size: 14px;
+        }
+
+        .hero-content h1 {
+          font-size: 2em;
+        }
+
+        .hero-content p {
+          font-size: 1em;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .footer-top {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links a {
+          margin: 0 8px;
+          font-size: 12px;
+        }
+
+        .hero-content h1 {
+          font-size: 1.5em;
+        }
+
+        .hero-content p {
+          font-size: 0.9em;
+        }
+
+        .section {
+          padding: 40px 0;
+        }
+
+        .section-title h2 {
+          font-size: 1.5em;
+        }
+
+        .feature-card {
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav-container">
+        <div class="logo">
+          <img src="图片/公司logo.png" alt="远创科技logo" />
+        </div>
+        <nav class="nav-links">
+          <a href="关于我们.html">关于我们</a>
+          <a href="业务介绍.html">业务介绍</a>
+<a href="#" onmouseenter="showContact()" onmouseleave="hideContact()">联系我们</a>        </nav>
+      </div>
+      <div id="contactPopup" class="popup hidden" onmouseenter="showContact()" onmouseleave="hideContact()">
+  <div class="popup-content">
+    <p>电话:04715314923</p>
+    <p>邮箱:nmyuanchuangkeji@126.com</p>
+  </div>
+</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>内蒙古远创工程技术有限公司</h1>
+        <p>专业的工程技术服务提供商</p>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>关于我们</h2>
+        </div>
+        <p>
+          远创科技成立于2015年9月，是一家专业从事工程设计、项目管理、食品工艺设计、工程安装及单机设备销售及自动化安装的工程服务商和销售服务商。我们以客户为中心，提供全方位的咨询、设计、工程安装、电器及自动化安装及设备调试的交钥匙工程服务。
+        </p>
+        <div class="features">
+          <div class="feature-card">
+            <h3>专业团队</h3>
+            <p>拥有来自蒙牛、GEA公司的资深专家团队，经验丰富</p>
+          </div>
+          <div class="feature-card">
+            <h3>先进技术</h3>
+            <p>积累了国内外先进的工艺及自动化设计理念</p>
+          </div>
+          <div class="feature-card">
+            <h3>优质服务</h3>
+            <p>完善的售前、售中、售后服务体系</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="mission">
+      <div class="container">
+        <div class="section-title">
+          <h2>企业宗旨</h2>
+        </div>
+        <div class="mission-content">
+          <p>
+            秉承与客户"共创、共享、共赢"的宗旨，倡导先进的技术理念、规范的生产流程、完善的服务体系，与客户共同发展，提升品牌知名度。
+          </p>
+          <div class="clients">
+            <h3>服务客户</h3>
+            <p>
+              公司服务的客户有蒙牛乳业、青海雪峰牦牛乳业、宁夏春天然乳业、集宁心乐乳业、现代牧业、河北乡谣乳业、鄂尔多斯蒙纯乳业、内蒙古双牛乳业、内蒙古健益壹生、内蒙古智天然现代农场等国内知名企业。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="partners">
+      <div class="container">
+        <div class="section-title">
+          <h2>合作伙伴</h2>
+        </div>
+        <p>
+          以技术领先为企业核心目标，与国内外知名的生产制造商、工程安装商达成战略合作关系，提供一流的技术、一流的设备、一流的服务，解决客户问题，提升客户形象，树立自我品牌。
+        </p>
+        <div class="partners">
+          <img src="图片/合作伙伴.png" alt="合作伙伴" />
+        </div>
+      </div>
+    </section>
+        <section class="section" id="do">
+      <div class="container">
+        <div class="section-title">
+          <h2>业务介绍</h2>
+        </div>
+        <div class="features">
+          <div class="feature-card">
+            <h3>工厂咨询设计</h3>
+            <a href="业务介绍.html#factory" class="detail-link">查看详情</a>
+          </div>
+          <div class="feature-card">
+            <h3>产品工艺设计</h3>
+            <a href="业务介绍.html#product" class="detail-link">查看详情</a>
+          </div>
+          <div class="feature-card">
+            <h3>工程项目管理</h3>
+            <a href="业务介绍.html#project" class="detail-link">查看详情</a>
+          </div>
+           <div class="feature-card">
+            <h3>工程设备安装</h3>
+            <a href="业务介绍.html#installation" class="detail-link">查看详情</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-column">
+            <h3>公司简介</h3>
+            <p>内蒙古远创工程技术有限公司成立于2015年9月，专业从事工程设计、项目管理、食品工艺设计等服务。</p>
+          </div>
+          <div class="footer-column">
+            <h3>联系方式</h3>
+            <p><strong>电话：</strong><br>04715314923</p>
+            <p><strong>邮箱：</strong>nmyuanchuangkeji@126.com</p>
+          </div>
+          <div class="footer-column">
+            <h3>公司地址</h3>
+            <p>内蒙古自治区<br>呼和浩特市赛罕区<br>金桥电子商务产业园</p>
+          </div>
+          <div class="footer-column">
+            <h3>业务范围</h3>
+            <a href="业务介绍.html#factory">工厂咨询设计</a>
+            <a href="业务介绍.html#product">产品工艺设计</a>
+            <a href="业务介绍.html#project">工程项目管理</a>
+            <a href="业务介绍.html#installation">工程设备安装</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy;2024 内蒙古远创工程技术有限公司. 版权所有</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/highlight-nav.js"></script>
+  </body>
+</html>

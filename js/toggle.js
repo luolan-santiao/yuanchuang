@@ -1,0 +1,1 @@
+// This file is no longer in use. Functions have been consolidated into highlight-nav.js

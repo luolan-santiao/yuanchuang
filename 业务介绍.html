@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>业务介绍 - 内蒙古远创工程技术有限公司</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="nav-container">
+        <div class="logo">
+          <img src="图片/公司logo.png" alt="远创科技logo" />
+        </div>
+        <div id="nav">
+          <ul>
+            <li class="slide1"></li>
+            <li class="slide2"></li>
+            <li><a href="关于我们.html">关于我们</a></li>
+            <li><a href="业务介绍.html">业务介绍</a></li>
+            <li><a href="#" onmouseenter="showContact()" onmouseleave="hideContact()">联系我们</a></li>
+          </ul>
+        </div>
+        <div id="contactPopup" class="popup hidden" onmouseenter="showContact()" onmouseleave="hideContact()">
+          <div class="popup-content">
+            <p>电话:04715314923</p>
+            <p>邮箱:nmyuanchuangkeji@126.com</p>
+          </div>
+        </div>
+    </header>
+    <main>
+
+      <div class="business-container">
+
+  <!-- 左侧目录 -->
+  <div class="sidebar">
+    <ul>
+      <li><a href="#factory">工厂咨询设计</a></li>
+      <li><a href="#product">产品工艺设计</a></li>
+      <li><a href="#project">工程项目管理</a></li>
+      <li><a href="#installation">工程设备安装</a></li>
+    </ul>
+  </div>
+
+  <!-- 右侧内容 -->
+  <div class="content">
+
+    <section id="factory">
+      <h2>工厂咨询设计</h2>
+      <div class="gallery">
+        <img src="图片/1.png">
+        <img src="图片/2.png">
+      </div>
+    </section>
+
+    <section id="product">
+      <h2>产品工艺设计</h2>
+      <div class="gallery">
+        <img src="图片/3.png">
+      </div>
+    </section>
+
+    <section id="project">
+      <h2>工程项目管理</h2>
+      <div class="gallery">
+        <img src="图片/4.png">
+      </div>
+    </section>
+
+    <section id="installation">
+      <h2>工程设备安装销售</h2>
+      <div class="gallery">
+        <img src="图片/5.png">
+        <img src="图片/6.png">
+         <img src="图片/7.png">
+          <img src="图片/8.png">
+       <img src="图片/9.png">
+       <img src="图片/10.png">
+       <img src="图片/11.png">
+       <img src="图片/12.png">
+       <img src="图片/13.png">
+
+      </div>
+    </section>
+  </div>
+
+</main>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: white;
+        font-family: "Microsoft YaHei", sans-serif;
+        color: #333;
+      }
+      main {
+        width: 100%;
+      }
+      .content section {
+        width: 100%;
+        min-height: auto;
+        display: block;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 0;
+      }
+      input {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+      }
+      .tabs {
+        width: 90%;
+        margin: 200px;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
+      }
+      .tab {
+        overflow: hidden;
+      }
+      .tab img{
+        width: 800px;
+        height: 400px;
+      }
+      .tab-label {
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: #0056b3;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .tab-label:hover {
+        background-color: #007bff;
+      }
+      .tab-label::after {
+        content: ">";
+        width: 10px;
+        height: 10px;
+        text-align: center;
+        transition: all 0.2s ease;
+      }
+      .tab-content {
+        max-height: 0;
+        padding: 0 10px;
+        color: black;
+        background: #f8f9fa;
+        transition: all 0.2s ease;
+        font-size: 13px;
+        line-height: 24px;
+        display: flex; /* 使用flexbox布局 */
+        flex-direction: column; /* 垂直排列内容 */
+        align-items: center; /* 水平居中内容 */
+      }
+      .tab img {
+        width: 100%; /* 使图片自适应容器宽度 */
+        max-width: 800px; /* 设置图片最大宽度 */
+        height: auto; /* 保持图片比例 */
+        margin: 10px 0; /* 图片上下间距 */
+      }
+      .tab-content {
+        max-height: 0;
+        padding: 0 10px;
+        color: black;
+        background: #f8f9fa;
+        transition: all 0.2s ease;
+        font-size: 13px;
+        line-height: 24px;
+        display: flex; /* 使用flexbox布局 */
+        flex-direction: column; /* 垂直排列内容 */
+        align-items: center; /* 水平居中内容 */
+      }
+      .tab img {
+        width: 100%; /* 使图片自适应容器宽度 */
+        max-width: 800px; /* 设置图片最大宽度 */
+        height: auto; /* 保持图片比例 */
+        margin: 10px 0; /* 图片上下间距 */
+      }
+      input:checked + .tab-label {
+        background: #007bff;
+      }
+      input:checked + .tab-label::after {
+        transform: rotate(90deg);
+      }
+      input:checked ~ .tab-content {
+        max-height: 100vh;
+        padding: 10px;
+      }
+      header {
+        background-color: rgba(255, 255, 255, 0.95);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 35px;
+      }
+      .slide1,
+      .slide2 {
+        position: absolute;
+        display: inline-block;
+        height: 40px;
+        border-radius: ;
+        transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1.05);
+      }
+      .slide1 {
+        background-color: rgb(170, 190, 255);
+        z-index: 2;
+      }
+      .slide2 {
+        opacity: 0;
+        background-color: rgb(170, 190, 255, 0.5);
+        z-index: 1;
+        box-shadow: 0 0 20px #ffffffaa inset;
+      }
+      squeeze{
+        transform: scale(0.9);
+      }
+      #nav ul {
+        display: flex; /* 使用flexbox布局 */
+        list-style: none; /* 去掉列表样式 */
+        padding: 0; /* 去掉内边距 */
+        margin: 0; /* 去掉外边距 */
+      }
+
+      #nav a {
+        text-decoration: none;
+        color: #333;
+        margin: 0 20px;
+        font-size: 16px;
+        transition: color 0.3s;
+      }
+
+      #nav a:hover {
+        color: #007bff;
+      }
+
+      /* 联系方式popup样式 */
+      .popup {
+        position: fixed;
+        top: 70px;
+        right: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1001;
+        opacity: 1;
+        transition: opacity 0.3s;
+      }
+
+      @media (max-width: 768px) {
+        .popup {
+          right: 10px;
+        }
+
+        .popup-content {
+          padding: 15px;
+        }
+
+        .popup-content p {
+          font-size: 12px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .popup {
+          top: 75px;
+          right: 5px;
+          max-width: 90vw;
+        }
+
+        .popup-content {
+          padding: 10px;
+        }
+
+        .popup-content p {
+          font-size: 11px;
+          margin: 5px 0;
+        }
+      }
+
+      .popup.hidden {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+      }
+
+      .popup-content {
+        padding: 20px;
+        text-align: center;
+      }
+
+      .popup-content p {
+        margin: 10px 0;
+        font-size: 14px;
+      }
+
+      @media (max-width: 768px) {
+        #nav a {
+          margin: 0 12px;
+          font-size: 14px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        #nav a {
+          margin: 0 8px;
+          font-size: 12px;
+        }
+      }
+       /* ... existing code ... */
+    .fullscreen {
+    }
+    .fullscreen img {
+      max-width: 100%;
+      max-height: 100%;
+      transition: transform 0.2s; /* 添加过渡效果 */
+    }
+
+    /* 业务介绍页面布局样式 */
+    .business-container {
+      display: flex;
+      width: 100%;
+      margin-top: 70px;
+    }
+
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 70px;
+      width: 200px;
+      height: calc(100vh - 70px);
+      background: linear-gradient(135deg, #0056b3 0%, #003d82 100%);
+      padding: 30px 0;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li {
+      margin: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s;
+      border-left: 4px solid transparent;
+      position: relative;
+    }
+
+    .sidebar a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-left-color: #fff;
+      padding-left: 25px;
+    }
+
+    .sidebar a.active {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-left-color: #fff;
+    }
+
+    .content {
+      margin-left: 200px;
+      padding: 40px 60px;
+      width: calc(100% - 200px);
+    }
+
+    .content section {
+      margin-bottom: 60px;
+      padding: 30px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .content section:last-child {
+      border-bottom: none;
+    }
+
+    .content h2 {
+      font-size: 2em;
+      color: #0056b3;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .gallery img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.02);
+    }
+
+    /* 平滑滚动 */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed;
+        width: 100%;
+        height: auto;
+        bottom: 0;
+        left: 0;
+        top: auto;
+        background: linear-gradient(135deg, #0056b3 0%, #003d82 100%);
+        margin-top: 0;
+        padding: 8px 0;
+        overflow-x: auto;
+        overflow-y: visible;
+        z-index: 50;
+      }
+
+      .sidebar ul {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 0 10px;
+      }
+
+      .sidebar li {
+        flex: 0 0 auto;
+        min-width: auto;
+      }
+
+      .sidebar a {
+        padding: 8px 10px;
+        font-size: 12px;
+        border-left: none;
+        text-align: center;
+        border-bottom: 3px solid transparent;
+        color: white;
+        white-space: nowrap;
+      }
+
+      .sidebar a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-bottom-color: #fff;
+      }
+
+      .sidebar a.active {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-bottom-color: #fff;
+      }
+
+      .content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px 15px;
+        margin-top: 0;
+        margin-bottom: 50px;
+      }
+
+      .content h2 {
+        font-size: 1.5em;
+      }
+
+      .gallery {
+        gap: 15px;
+      }
+
+      .gallery img {
+        max-height: 300px;
+      }
+
+      .business-container {
+        flex-direction: column;
+        margin-top: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sidebar {
+        padding: 6px 0;
+        height: auto;
+      }
+
+      .sidebar ul {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 0 8px;
+      }
+
+      .sidebar li {
+        min-width: 85px;
+      }
+
+      .sidebar a {
+        padding: 6px 8px;
+        font-size: 11px;
+      }
+
+      .content {
+        padding: 15px 10px;
+        margin-top: 0;
+        margin-bottom: 45px;
+      }
+
+      .content h2 {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+      }
+
+      .content section {
+        margin-bottom: 30px !important;
+        padding: 15px 0 !important;
+        border-bottom: 1px solid #e0e0e0 !important;
+      }
+
+      .gallery {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .gallery img {
+        max-height: 250px;
+        width: 100%;
+      }
+    }
+    /* ... existing code ... */
+    </style>
+  </body>
+  <script>
+    // 处理侧栏链接的活跃状态
+    function updateActiveSidebarLink() {
+      const sections = document.querySelectorAll('.content section');
+      const links = document.querySelectorAll('.sidebar a');
+      
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        const scrollPosition = window.scrollY + 100;
+        
+        if (scrollPosition >= top && scrollPosition < top + height) {
+          links.forEach(link => {
+            link.classList.remove('active');
+          });
+          const activeLink = document.querySelector(`.sidebar a[href="#${section.id}"]`);
+          if (activeLink) {
+            activeLink.classList.add('active');
+          }
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveSidebarLink);
+    window.addEventListener('load', updateActiveSidebarLink);
+
+    // 原有的导航脚本
+    $("#nav a").on("click", function () {
+      var position = $(this).parent().position();
+      var width = $(this).parent().width();
+      $("#nav .slide1").css({
+        opacity: 1,
+        left: +position.left,
+        width: width,
+      });
+    });
+    $("#nav a").on("mouseover", function () {
+      var position = $(this).parent().position();
+      var width = $(this).parent().width();
+      $("#nav .slide2")
+        .css({ opacity: 1, left: +position.left, width: width })
+        .addClass("squeeze");
+    });
+    $("#nav a").on("mouseout", function () {
+      var position = $(this).parent().position();
+      var width = $(this).parent().width();
+      $("#nav .slide2").css({ opacity: 0 }).removeClass("squeeze");
+    });
+    var currentWidth = $("#nav li:nth-of-type(3) a").parent("li").width();
+    var current = $("li:nth-of-type(3) a").position();
+    $("#nav .slide1").css({ left: +current.left, width: currentWidth });
+
+    // Contact functions for hover popup
+    function showContact() {
+      document.getElementById('contactPopup').classList.remove('hidden');
+    }
+
+    function hideContact() {
+      document.getElementById('contactPopup').classList.add('hidden');
+    }</script>
+</html>
